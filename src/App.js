@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import Accordion from './components/Accordion';
+import Search from './components/Search';
+import Dropdown from './components/Dropdown';
+import Translate from './components/Translate';
 
 const items = [
   {
@@ -16,20 +19,50 @@ const items = [
     title: 'How do you use React?',
     content: 'You use react by creating reusable components'
   }
-]
+];
 
-class App extends Component {
-  render() {
-    return (
-      <Container>
-        <Row>
-          <Col>
-            <Accordion items={items} />
-          </Col>
-        </Row>
-      </Container>
-    );
+const options = [
+  {
+    label: 'The Color Red',
+    value: 'red'
+  },
+  {
+    label: 'The Color Green',
+    value: 'green'
+  },
+  {
+    label: 'A Shade of Blue',
+    value: 'blue'
   }
-}
+];
 
-export default App;
+export default () => {
+  const [selected, setSelected] = useState(options[0]);
+  const [showDropdown, setShowDropdown] = useState(true);
+
+  return (
+    <Container>
+      <Row>
+        <Col className="mt-4">
+          {/* <Accordion items={items} /> */}
+          {/* <Search /> */}
+          {/* <Button
+            variant="secondary"
+            onClick={() => setShowDropdown(!showDropdown)}
+            className="mb-4"
+          >
+              Toggle Dropdown
+          </Button>
+          {showDropdown ?
+            <Dropdown
+              options={options}
+              selected={selected}
+              onSelectedChange={setSelected}
+            /> : null
+          } */}
+          <Translate />
+        </Col>
+      </Row>
+    </Container>
+  );
+};
