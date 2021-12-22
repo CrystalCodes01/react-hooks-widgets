@@ -1,5 +1,8 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Dropdown from './Dropdown';
+import Convert from './Convert';
+
+// API KEY = AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM
 
 const options = [
   {
@@ -9,6 +12,10 @@ const options = [
   {
     label: 'Arabic',
     value: 'ar'
+  },
+  {
+    label: 'Dutch',
+    value: 'nl'
   },
   {
     label: 'Hindi',
@@ -37,6 +44,9 @@ const Translate = () => {
         onSelectedChange={setLanguage}
         label="Select your language:"
       />
+      <hr />
+      <h3 className="ui header">Output</h3>
+      <Convert text={text} language={language} />
     </Fragment>
   );
 };
