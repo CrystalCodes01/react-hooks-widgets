@@ -5,6 +5,8 @@ import Accordion from './components/Accordion';
 import Search from './components/Search';
 import Dropdown from './components/Dropdown';
 import Translate from './components/Translate';
+import Route from './components/Route';
+import Header from './components/Header';
 
 const items = [
   {
@@ -43,24 +45,35 @@ export default () => {
   return (
     <Container>
       <Row>
+        <Header />
         <Col className="mt-4">
-          {/* <Accordion items={items} /> */}
-          {/* <Search /> */}
-          {/* <Button
-            variant="secondary"
-            onClick={() => setShowDropdown(!showDropdown)}
-            className="mb-4"
-          >
-              Toggle Dropdown
-          </Button>
-          {showDropdown ?
-            <Dropdown
-              options={options}
-              selected={selected}
-              onSelectedChange={setSelected}
-            /> : null
-          } */}
-          <Translate />
+          <Route path="/">
+            <Accordion items={items} />
+          </Route>
+          <Route path="/search">
+            <Search />
+          </Route>
+          <Route path="/dropdown">
+            <Button
+              variant="secondary"
+              onClick={() => setShowDropdown(!showDropdown)}
+              className="mb-4"
+            >
+                Toggle Dropdown
+            </Button>
+            {showDropdown ?
+              <Dropdown
+                label="Select a Color:"
+                options={options}
+                selected={selected}
+                onSelectedChange={setSelected}
+              />
+            : null
+            }
+          </Route>
+          <Route path="/translate">
+            <Translate />
+          </Route>
         </Col>
       </Row>
     </Container>
